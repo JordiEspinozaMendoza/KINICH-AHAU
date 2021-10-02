@@ -1,10 +1,10 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const port = 5000;
 
-import routes from "./routes/index";
+const routes = require("./routes/index");
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`)

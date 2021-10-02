@@ -1,5 +1,5 @@
-import { Router } from "express";
-import app from "../index";
+const { Router } = require("express");
+const app = require("../index");
 const router = Router();
 
 /* router
@@ -7,4 +7,4 @@ const router = Router();
     .post(user.createUser)
     .get(permissionsAdmin, user.getAllUser); */
 
-export default router;
+module.exports = router;
