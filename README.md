@@ -1,7 +1,7 @@
 # Your are my sunshine
-_Por el equipo Kinich Ahau
+_Por el equipo Kinich Ahau_
 
-### Comando para iniciar en docker
+### Comando para iniciar entorno docker
 ```
-docker build -t node-sunshine
+docker run node-sunshine
 ```
