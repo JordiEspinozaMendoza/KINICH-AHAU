@@ -2,8 +2,6 @@ const { Router } = require("express");
 
 const { daily, climatology, hourly, montly } = require("../controller/index");
 
-//import { getPointHourly } from "../controller/hourly.js";
-
 const router = Router();
 
 router
@@ -14,18 +12,18 @@ router
 
 router
     .route("/hourly")
-    .get(hourly.getPointHourly);
+    .post(hourly.getPointHourly);
 
 router
     .route("/daily")
-    .get(daily.getPointDaily);
+    .post(daily.getPointDaily);
 
 router
     .route("/montly")
-    .get(montly.getPointMontly);
+    .post(montly.getPointMontly);
 
 router
     .route("/climatology")
-    .get(climatology.getPointClimatology);
+    .post(climatology.getPointClimatology);
 
 module.exports = router;
