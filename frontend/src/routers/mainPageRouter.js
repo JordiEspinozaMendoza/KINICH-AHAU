@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 // ? Components
 import { navigationBar } from "components/navigationBar";
-import { storeRoutes as routes } from "navigation/Routes";
+import { mainPageRoutes as routes } from "routes/mainPageRoutes";
 export const StoreRouter = () => {
   return (
     <>
@@ -11,7 +11,6 @@ export const StoreRouter = () => {
       <React.Suspense
         fallback={
           <div className="loading_container">
-            <LoaderLogo />
           </div>
         }
       >

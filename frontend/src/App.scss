@@ -1,0 +1,31 @@
+.map_container {
+  position: relative;
+  .search_container {
+    position: absolute;
+    margin: 20px 0 0 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1043;
+    border: none;
+    input{
+      width: 50%;
+      padding: 0.2rem 0.5rem;
+      border: none;
+      box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
+    }
+  }
+}
+ul {
+  background-color: #fff !important;
+  list-style: none;
+  padding-left: 0 !important;
+  li {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 0.2rem 0.5rem;    
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+}

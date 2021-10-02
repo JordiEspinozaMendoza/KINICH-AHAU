@@ -1,0 +1,4 @@
+export const actions = {
+    SET_LOCATION: 'SET_LOCATION',
+    SET_ACTUAL_LOCATION: 'SET_ACTUAL_LOCATION',
+}
