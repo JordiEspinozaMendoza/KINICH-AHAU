@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const getPointMontly = async (req, res) => {
 
     try {
@@ -10,7 +12,9 @@ const getPointMontly = async (req, res) => {
 
         console.log(urlComplete);
 
-        res.status(201).send(urlComplete);
+        const { data } = await axios.get(urlComplete, { crossdomain: true });
+
+        res.status(201).send(data);
     } catch (error) {
         return res.status(404).send(error.message);
     }

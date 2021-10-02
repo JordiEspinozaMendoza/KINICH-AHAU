@@ -10,4 +10,4 @@ const getPointHourly = async (req, res) => {
 
 module.exports = {
     getPointHourly
-}
+};

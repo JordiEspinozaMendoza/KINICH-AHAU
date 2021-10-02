@@ -1,32 +1,31 @@
 const { Router } = require("express");
-const app = require("../index");
-const router = Router();
 
-const { getPointHourly } = require("../controller/hourly");
-const { getPointDaily } = require("../controller/daily");
-const { getPointMontly } = require("../controller/montly");
-const { getPointClimatology } = require("../controller/climatology");
+const { daily, climatology, hourly, montly } = require("../controller/index");
+
+//import { getPointHourly } from "../controller/hourly.js";
+
+const router = Router();
 
 router
     .route("/")
     .get((req, res) => {
-        res.send("Hola");
+        res.send("Holaaaxxa");
     });
 
 router
     .route("/hourly")
-    .get(getPointHourly);
+    .get(hourly.getPointHourly);
 
 router
     .route("/daily")
-    .get(getPointDaily);
+    .get(daily.getPointDaily);
 
 router
     .route("/montly")
-    .get(getPointMontly);
+    .get(montly.getPointMontly);
 
 router
     .route("/climatology")
-    .get(getPointClimatology);
+    .get(climatology.getPointClimatology);
 
 module.exports = router;
