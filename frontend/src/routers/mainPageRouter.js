@@ -2,12 +2,14 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 // ? Components
-import { navigationBar } from "components/navigationBar";
 import { mainPageRoutes as routes } from "routes/mainPageRoutes";
-export const StoreRouter = () => {
+import { NavigationBar } from "components";
+import ToastAlert from "components/ToastAlert";
+export const MainPageRouter = () => {
   return (
     <>
       <NavigationBar />
+      <ToastAlert/>
       <React.Suspense
         fallback={
           <div className="loading_container">
@@ -28,7 +30,6 @@ export const StoreRouter = () => {
           })}
         </Switch>
       </React.Suspense>
-      <Footer />
     </>
   );
 };
