@@ -4,11 +4,11 @@ const { daily, climatology, hourly, montly } = require("../controller/index");
 
 const router = Router();
 
-router
+/* router
     .route("/")
     .get((req, res) => {
         res.send("Holaaaxxa");
-    });
+    }); */
 
 router
     .route("/hourly")
