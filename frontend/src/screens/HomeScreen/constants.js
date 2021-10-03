@@ -1,5 +1,6 @@
 export const initialState = {
-  actualScreen: 'selectLocation',
+  actualScreen: "formParameters",
+  typeDate: "hour",
   location: {
     lat: 0,
     lng: 0,
@@ -14,5 +15,9 @@ export const initialState = {
     success: false,
     error: null,
     data: null,
+  },
+  fetchData: {
+    startDate: "",
+    endDate: "",
   },
 };
