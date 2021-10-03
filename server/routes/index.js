@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { daily, climatology, hourly, montly, anomalies } = require("../controller/index");
+const { daily, climatology, hourly, montly, anomalies, windrose } = require("../controller/index");
 
 const router = Router();
 
@@ -33,5 +33,9 @@ router
 router
     .route("/anomalies")
     .post(anomalies.getPointAnomalies);
+
+router
+    .route("/windrose")
+    .post(windrose.getPointWindrose);
 
 module.exports = router;
