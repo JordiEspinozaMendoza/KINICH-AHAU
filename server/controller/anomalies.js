@@ -4,18 +4,15 @@ const getPointAnomalies = async (req, res) => {
 
     try {
 
-        // const { longitude, latitude, start, end } = req.body;
-        let longitude = -84;
-        let latitude = 33.64;
-        let start = 1990;
-        let end = 2014
+        const { longitude, latitude, start, end } = req.body;
 
-        const urlBase = "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M&community=SB&"
-        const urlComplete = `${urlBase}longitude=${longitude}&latitude=${latitude}&start=${start}&end=${end}&format=JSON`
+        const urlBase = "https://power.larc.nasa.gov/api/application/anomalies/point?"
+        const urlComplete = `${urlBase}longitude=${longitude}&latitude=${latitude}&start=${start}&end=${end}&format=HTML`
 
-        const { data } = await axios.get(urlComplete, { crossdomain: true });
+        //https://power.larc.nasa.gov/api/application/anomalies/point?longitude=-84.43&latitude=33.64&start=2010&end=2014&format=HTML
 
-        res.status(201).send(data);
+        axios.get(urlComplete, { crossdomain: true }).then((data) => res.status(201).send(data));
+
     } catch (error) {
         return res.status(404).send(error.message);
     }

@@ -5,7 +5,6 @@ const montly = require('./montly');
 const climatology = require('./climatology');
 const anomalies = require("./anomalies");
 
-
 module.exports = {
     hourly,
     daily,

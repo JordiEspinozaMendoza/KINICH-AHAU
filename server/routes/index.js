@@ -26,11 +26,12 @@ router
     .route("/climatology/simple")
     .post(climatology.getPointClimatologySimple);
 
-router
-.route("/climatology/custom")
-.post(climatology.getPointClimatologyCustom);
+/* router
+    .route("/climatology/custom")
+    .post(climatology.getPointClimatologyCustom); */
 
 router
     .route("/anomalies")
     .post(anomalies.getPointAnomalies);
+
 module.exports = router;

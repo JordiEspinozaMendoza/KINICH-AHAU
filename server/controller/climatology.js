@@ -11,14 +11,14 @@ const getPointClimatologySimple = async (req, res) => {
 
         const { data } = await axios.get(urlComplete, { crossdomain: true });
 
-        res.status(201).send(data.properties);
+        res.status(201).send(data.properties.parameter.T2M);
     } catch (error) {
         return res.status(404).send(error.message);
     }
 
 }
 
-const getPointClimatologyCustom = async (req, res) => {
+/* const getPointClimatologyCustom = async (req, res) => {
 
     try {
 
@@ -34,9 +34,9 @@ const getPointClimatologyCustom = async (req, res) => {
         return res.status(404).send(error.message);
     }
 
-}
+} */
 
 module.exports = {
     getPointClimatologySimple,
-    getPointClimatologyCustom
+    //getPointClimatologyCustom
 }
