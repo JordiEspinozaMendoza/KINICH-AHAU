@@ -14,7 +14,7 @@ const getPointHourly = async (req, res) => {
 
         const { data } = await axios.get(urlComplete, { crossdomain: true });
 
-        res.status(201).send(data);
+        res.status(201).send(data.properties);
     } catch (error) {
         return res.status(404).send(error.message);
     }
