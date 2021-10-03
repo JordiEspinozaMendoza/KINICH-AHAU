@@ -10,8 +10,6 @@ const getPointMontly = async (req, res) => {
 
         const urlComplete = `${urlBase}longitude=${longitude}&latitude=${latitude}&format=JSON&start=${start}&end=${end}`;
 
-        console.log(urlComplete);
-
         const { data } = await axios.get(urlComplete, { crossdomain: true });
 
         res.status(201).send(data);
