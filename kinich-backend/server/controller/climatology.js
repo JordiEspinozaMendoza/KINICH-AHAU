@@ -6,7 +6,7 @@ const getPointClimatology = async (req, res) => {
 
         const { longitude, latitude, start, end } = req.body;
 
-        const urlBase = "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M&community=SB&"
+        const urlBase = "https://power.larc.nasa.gov/api/temporal/climatology/point?parameters=T2M&community=SB&"
         const urlComplete = `${urlBase}longitude=${longitude}&latitude=${latitude}&start=${start}&end=${end}&format=JSON`
 
         console.log(urlComplete);
