@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { daily, climatology, hourly, montly } = require("../controller/index");
+const { daily, climatology, hourly, montly, anomalies } = require("../controller/index");
 
 const router = Router();
 
@@ -27,7 +27,10 @@ router
     .post(climatology.getPointClimatologySimple);
 
 router
-    .route("/climatology/custom")
-    .post(climatology.getPointClimatologyCustom);
+.route("/climatology/custom")
+.post(climatology.getPointClimatologyCustom);
 
+router
+    .route("/anomalies")
+    .post(anomalies.getPointAnomalies);
 module.exports = router;
