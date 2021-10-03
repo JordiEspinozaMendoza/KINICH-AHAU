@@ -23,7 +23,11 @@ router
     .post(montly.getPointMontly);
 
 router
-    .route("/climatology")
-    .post(climatology.getPointClimatology);
+    .route("/climatology/simple")
+    .post(climatology.getPointClimatologySimple);
+
+router
+    .route("/climatology/custom")
+    .post(climatology.getPointClimatologyCustom);
 
 module.exports = router;
