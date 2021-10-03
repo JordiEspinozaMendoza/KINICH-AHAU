@@ -6,7 +6,7 @@ const getPointHourly = async (req, res) => {
 
         const { longitude, latitude, start, end } = req.body;
 
-        const urlBase = "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M&community=SB&"
+        const urlBase = "https://power.larc.nasa.gov/api/temporal/hourly/point?parameters=T2M,ALLSKY_SFC_SW_DWN&community=SB&"
         const urlComplete = `${urlBase}longitude=${longitude}&latitude=${latitude}&start=${start}&end=${end}&format=JSON`
 
         const { data } = await axios.get(urlComplete, { crossdomain: true });

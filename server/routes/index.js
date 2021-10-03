@@ -1,13 +1,13 @@
 const { Router } = require("express");
 
-const { daily, climatology, hourly, montly, anomalies, windrose } = require("../controller/index");
+const { daily, climatology, hourly, montly, anomalies, windrose, manager } = require("../controller/index");
 
 const router = Router();
 
 /* router
     .route("/")
     .get((req, res) => {
-        res.send("Holaaaxxa");
+        res.send("Hi");
     }); */
 
 router
@@ -26,9 +26,9 @@ router
     .route("/climatology/simple")
     .post(climatology.getPointClimatologySimple);
 
-/* router
+router
     .route("/climatology/custom")
-    .post(climatology.getPointClimatologyCustom); */
+    .post(climatology.getPointClimatologyCustom);
 
 router
     .route("/anomalies")
@@ -37,5 +37,9 @@ router
 router
     .route("/windrose")
     .post(windrose.getPointWindrose);
+
+router
+    .route("/manager")
+    .get(manager.getPointManager);
 
 module.exports = router;
