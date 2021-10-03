@@ -17,7 +17,9 @@ export const initialState = {
     data: null,
   },
   fetchData: {
-    startDate: "",
-    endDate: "",
+    start: "",
+    end: "",
+    url: "",
+    
   },
 };

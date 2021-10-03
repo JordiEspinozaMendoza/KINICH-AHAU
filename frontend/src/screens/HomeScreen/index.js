@@ -1,10 +1,9 @@
 import React from "react";
-import { Form, Container } from "react-bootstrap";
 import { initialState } from "./constants";
 import { reducer } from "./reducer";
 import { SelectLocation } from "./selectLocation";
 import { FormParameters } from "./form";
-import { actions } from "./actions";
+import { Results } from "./results";
 export default function HomeScreen() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
@@ -14,8 +13,10 @@ export default function HomeScreen() {
         return <SelectLocation state={state} dispatch={dispatch} />;
       case "formParameters":
         return <FormParameters state={state} dispatch={dispatch} />;
+      case "results":
+        return <Results state={state} dispatch={dispatch} />;
       default:
-        return <FormParameters state={state} dispatch={dispatch} />;
+        return <SelectLocation state={state} dispatch={dispatch} />;
     }
   };
   return <>{renderScreen()}</>;

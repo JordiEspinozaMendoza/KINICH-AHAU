@@ -1,6 +1,7 @@
 import { API_URL } from "./apiUrl";
 import axios from "axios";
 export async function callApi(url, actions, body, dispatch) {
+  console.log(body)
   const { REQUEST, SUCCESS, FAILURE } = actions;
   console.log("callApi", url);
   try {

@@ -73,23 +73,7 @@ export const SelectLocation = ({ state, dispatch }) => {
       });
     }, 1000);
   };
-  const handleSearch = (lat, lng) => {
-    callApi(
-      "/montly/",
-      {
-        REQUEST: actions.RESULTS_FETCH_REQUEST,
-        SUCCESS: actions.RESULTS_FETCH_SUCCESS,
-        FAILURE: actions.RESULTS_FETCH_FAILURE,
-      },
-      {
-        longitude: lng,
-        latitude: lat,
-        start: 2018,
-        end: 2018,
-      },
-      dispatch
-    );
-  };
+
   return (
     <div
       style={{ marginTop: "13vh", overflowX: "hidden", textAlign: "center" }}
@@ -111,7 +95,7 @@ export const SelectLocation = ({ state, dispatch }) => {
               />
             </div>
             <button
-              className="my_button"
+              className="my_button small_button"
               disabled={state.request.loading || state.location.lat === null}
               onClick={() => {
                 dispatch({
@@ -134,7 +118,6 @@ export const SelectLocation = ({ state, dispatch }) => {
             onClick={(e) => {
               if (!state.request.loading) {
                 toast.success("Location changed", { ...themed });
-
                 dispatch({
                   type: actions.SET_LOCATION,
                   payload: {
@@ -142,7 +125,6 @@ export const SelectLocation = ({ state, dispatch }) => {
                     lng: e.latLng.lng(),
                   },
                 });
-                handleSearch(e.latLng.lat(), e.latLng.lng());
               }
             }}
             center={state.actualLocation}

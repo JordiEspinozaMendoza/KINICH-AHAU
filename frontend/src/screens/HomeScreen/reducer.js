@@ -54,14 +54,19 @@ export const reducer = (state = initialState, action) => {
         ...state,
         actualScreen: action.payload,
       };
-    case action.SET_TYPE_DATE:
+    case actions.SET_FETCH_DATA:
       return {
         ...state,
-        typeDate: action.payload,
         fetchData: {
           ...state.fetchData,
-          startDate: "",
-          endDate: "",
+          ...action.payload,
+        },
+      };
+    case actions.RESET_FETCH_DATA:
+      return {
+        ...state,
+        fetchData: {
+          ...initialState.fetchData,
         },
       };
   }

@@ -1,4 +1,8 @@
 @import "./assets/constants.scss";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+*{
+  font-family: 'Open Sans', sans-serif;
+}
 .map_container {
   position: relative;
   margin: 2rem;
@@ -40,7 +44,11 @@
   border: none;
   font-size: 0.9rem;
   background-color: #fff;
+  padding: 0.5rem 1rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+.my_button .small_button {
+  padding: 0;
 }
 ul {
   background-color: #fff !important;
@@ -56,5 +64,15 @@ ul {
   }
 }
 .form_parameters{
+  margin-top: 10vh;
+  .form-group{
+    margin: 15px 0;
+    select, input{
+      border-radius: 0;
+    }
+  }
+}
+.results{
+  overflow: hidden;
   margin-top: 10vh;
 }
