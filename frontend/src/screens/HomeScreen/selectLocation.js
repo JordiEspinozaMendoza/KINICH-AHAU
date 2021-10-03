@@ -20,24 +20,26 @@ const options = {
 export const SelectLocation = ({ state, dispatch }) => {
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      setMyLocation({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      });
-      dispatch({
-        type: actions.SET_ACTUAL_LOCATION,
-        payload: {
+      if (state.location.lat == 0) {
+        setMyLocation({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
-        },
-      });
-      dispatch({
-        type: actions.SET_LOCATION,
-        payload: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        },
-      });
+        });
+        dispatch({
+          type: actions.SET_ACTUAL_LOCATION,
+          payload: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          },
+        });
+        dispatch({
+          type: actions.SET_LOCATION,
+          payload: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          },
+        });
+      }
     });
   }, []);
   const [myLocation, setMyLocation] = React.useState(null);
@@ -151,6 +153,12 @@ export const SelectLocation = ({ state, dispatch }) => {
             <button
               className="my_button"
               disabled={state.request.loading || state.location.lat === null}
+              onClick={() => {
+                dispatch({
+                  type: actions.SET_SCREEN,
+                  payload: "formParameters",
+                });
+              }}
             >
               Next step
             </button>

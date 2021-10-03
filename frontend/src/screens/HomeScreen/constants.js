@@ -1,8 +1,8 @@
 export const initialState = {
   actualScreen: 'selectLocation',
   location: {
-    latitude: 0,
-    longitude: 0,
+    lat: 0,
+    lng: 0,
   },
   actualLocation: {
     lat: 0,

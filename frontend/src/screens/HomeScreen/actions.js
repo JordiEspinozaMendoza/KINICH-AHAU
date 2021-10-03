@@ -8,4 +8,5 @@ export const actions = {
 
     RESET_STATE: 'RESET_STATE',
     SET_ZOOM: 'SET_ZOOM',
+    SET_SCREEN: 'SET_SCREEN',
 }

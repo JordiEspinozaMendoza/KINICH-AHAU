@@ -49,5 +49,10 @@ export const reducer = (state = initialState, action) => {
       return {
         ...initialState,
       };
+    case actions.SET_SCREEN:
+      return {
+        ...state,
+        actualScreen: action.payload,
+      };
   }
 };
