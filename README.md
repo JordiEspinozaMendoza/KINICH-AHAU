@@ -1,6 +1,6 @@
 # YOU ARE MY SUNSHINE - KINICH-AHAU
 
-![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/71615543/135927460-46381589-b556-43c5-bceb-60580d176378.png =250x)
+<img src="https://user-images.githubusercontent.com/71615543/135927460-46381589-b556-43c5-bceb-60580d176378.png" width="200" height="200" />
 
 [Proyecto desplegado](https://kinich-ahau.azurewebsites.net/#/)
 
