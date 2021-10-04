@@ -1,6 +1,6 @@
 # YOU ARE MY SUNSHINE - KINICH-AHAU
 
-<img src="https://user-images.githubusercontent.com/71615543/135927460-46381589-b556-43c5-bceb-60580d176378.png" width="500" height="500" />
+<img src="https://user-images.githubusercontent.com/71615543/135927460-46381589-b556-43c5-bceb-60580d176378.png" width="400" height="400" />
 
 [Proyecto desplegado](https://kinich-ahau.azurewebsites.net/#/)
 
