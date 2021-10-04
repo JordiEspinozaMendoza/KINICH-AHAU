@@ -1,5 +1,5 @@
 export const initialState = {
-  actualScreen: "formParameters",
+  actualScreen: "selectLocation",
   typeDate: "hour",
   location: {
     lat: 0,

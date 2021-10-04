@@ -1,7 +1,6 @@
 import { API_URL } from "./apiUrl";
 import axios from "axios";
-export async function callApi(url, actions, body, dispatch) {
-  console.log(body)
+export async function callApi(url, actions, dispatch) {
   const { REQUEST, SUCCESS, FAILURE } = actions;
   console.log("callApi", url);
   try {
@@ -10,12 +9,9 @@ export async function callApi(url, actions, body, dispatch) {
     });
 
     const { data } = await axios({
-      method: "POST",
+      method: "GET",
       url: API_URL + url,
-      data: body,
-      headers: {
-        "Content-Type": "application/json",
-      },
+
     });
     dispatch({
       type: SUCCESS,
@@ -26,5 +22,7 @@ export async function callApi(url, actions, body, dispatch) {
       type: FAILURE,
       payload: e,
     });
+    throw e.response?.data ? e.response.data : e.message;
+
   }
 }

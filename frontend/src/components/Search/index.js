@@ -34,7 +34,7 @@ export const Search = ({ center, changeLocation }) => {
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
-      changeLocation(lat, lng);
+      changeLocation(lat, lng, address);
     } catch (error) {
       console.log(error);
     }

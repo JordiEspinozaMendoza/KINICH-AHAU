@@ -3,9 +3,10 @@ import { actions } from "./actions";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Search } from "components";
 import { mapStyles } from "./mapStyles";
-import { callApi } from "api";
+import { PrimaryButton, Header } from "components/styledComponents";
 import toast from "react-hot-toast";
 import { themed } from "components/ToastAlert";
+import sunLogo from "assets/logos/sun.png";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
@@ -18,7 +19,12 @@ const options = {
 };
 
 export const SelectLocation = ({ state, dispatch }) => {
+  const [myLocation, setMyLocation] = React.useState();
+
   React.useEffect(() => {
+    setMyLocationToMap();
+  }, []);
+  const setMyLocationToMap = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       if (state.location.lat == 0) {
         setMyLocation({
@@ -30,6 +36,7 @@ export const SelectLocation = ({ state, dispatch }) => {
           payload: {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
+            nameLocation: "My Location",
           },
         });
         dispatch({
@@ -37,24 +44,24 @@ export const SelectLocation = ({ state, dispatch }) => {
           payload: {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
+            nameLocation: "My Location",
           },
         });
       }
     });
-  }, []);
-  const [myLocation, setMyLocation] = React.useState(null);
-
+  };
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAP_KEY,
     libraries,
   });
-  const changeLocation = (lat, lng) => {
+  const changeLocation = (lat, lng, nameLocation = "") => {
     toast.success("Location changed", { ...themed });
     dispatch({
       type: actions.SET_LOCATION,
       payload: {
         lat,
         lng,
+        nameLocation,
       },
     });
     dispatch({
@@ -62,6 +69,7 @@ export const SelectLocation = ({ state, dispatch }) => {
       payload: {
         lat,
         lng,
+        nameLocation,
       },
     });
     setTimeout(() => {
@@ -71,16 +79,18 @@ export const SelectLocation = ({ state, dispatch }) => {
           zoom: 15,
         },
       });
-    }, 1000);
+    }, 200);
   };
 
   return (
     <div
       style={{ marginTop: "13vh", overflowX: "hidden", textAlign: "center" }}
     >
-      <h4>Get information about sunshine in your area.</h4>
+      <Header modifiers={["h3"]}>
+        Get information about sunshine in your area.
+      </Header>
       <br />
-      <h3>Select your location</h3>
+      <Header modifiers={["h4"]}>Select your location on the map</Header>
       {loadError ? (
         <div>Error al cargar el mapa</div>
       ) : !isLoaded ? (
@@ -94,22 +104,15 @@ export const SelectLocation = ({ state, dispatch }) => {
                 changeLocation={changeLocation}
               />
             </div>
-            <button
+            <PrimaryButton
               className="my_button small_button"
               disabled={state.request.loading || state.location.lat === null}
               onClick={() => {
-                dispatch({
-                  type: actions.SET_LOCATION,
-                  payload: myLocation,
-                });
-                dispatch({
-                  type: actions.SET_ACTUAL_LOCATION,
-                  payload: myLocation,
-                });
+                setMyLocationToMap();
               }}
             >
               Go to my location
-            </button>
+            </PrimaryButton>
           </div>
           <GoogleMap
             options={options}
@@ -129,10 +132,17 @@ export const SelectLocation = ({ state, dispatch }) => {
             }}
             center={state.actualLocation}
           >
-            <Marker key={state.actualLocation.lat} position={state.location} />
+            <Marker
+              key={state.actualLocation.lat}
+              position={state.location}
+              icon={{
+                url: sunLogo,
+                scaledSize: new window.google.maps.Size(50, 50),
+              }}
+            />
           </GoogleMap>
           <div className="next_step_container">
-            <button
+            <PrimaryButton
               className="my_button"
               disabled={state.request.loading || state.location.lat === null}
               onClick={() => {
@@ -143,7 +153,7 @@ export const SelectLocation = ({ state, dispatch }) => {
               }}
             >
               Next step
-            </button>
+            </PrimaryButton>
           </div>
         </div>
       )}

@@ -1,1 +1,1 @@
-export const API_URL = "https://kinichahau.herokuapp.com";
+export const API_URL = "https://spaceappsk.azurewebsites.net/api/nasa/";

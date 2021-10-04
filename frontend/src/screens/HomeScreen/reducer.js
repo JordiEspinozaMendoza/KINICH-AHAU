@@ -53,6 +53,10 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         actualScreen: action.payload,
+        request:{
+          ...state.request,
+          success: false,
+        }
       };
     case actions.SET_FETCH_DATA:
       return {

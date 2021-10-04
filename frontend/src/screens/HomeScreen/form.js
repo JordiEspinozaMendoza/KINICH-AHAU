@@ -1,8 +1,14 @@
 import React from "react";
-import { Container, Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { actions } from "./actions";
 import { callApi } from "api";
-import { Graph } from "components";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  Header,
+  Span,
+  StyledForm as Form,
+} from "components/styledComponents";
 import toast from "react-hot-toast";
 import { themed } from "components/ToastAlert";
 const months = [
@@ -63,7 +69,7 @@ export function FormParameters({ state, dispatch }) {
                   handleChange({
                     start: e.target.value,
                     end: state.fetchData.end,
-                    url: "/montly",
+                    url: "yearly",
                   });
                 }}
               />
@@ -77,7 +83,7 @@ export function FormParameters({ state, dispatch }) {
                   handleChange({
                     start: state.fetchData.start,
                     end: e.target.value,
-                    url: "/montly",
+                    url: "yearly",
                   });
                 }}
               />
@@ -88,17 +94,25 @@ export function FormParameters({ state, dispatch }) {
         return (
           <>
             <Form.Group>
+              <Form.Label>Select year initial</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter year"
+                id="year"
+              />
+            </Form.Group>
+            <Form.Group>
               <Form.Label>Select Month initial</Form.Label>
               <Form.Control
                 as="select"
                 onChange={(e) => {
-                  var fullYear = new Date().getFullYear();
+                  var fullYear = document.getElementById("year").value;
                   var month =
                     e.target.value < 10 ? "0" + e.target.value : e.target.value;
                   handleChange({
-                    start: fullYear + month + "01",
+                    start: fullYear + month+ "01",
                     end: state.fetchData.end,
-                    url: "/daily",
+                    url: "daily",
                   });
                 }}
               >
@@ -115,13 +129,13 @@ export function FormParameters({ state, dispatch }) {
                 as="select"
                 as="select"
                 onChange={(e) => {
-                  var fullYear = new Date().getFullYear();
+                  var fullYear = document.getElementById("year").value;
                   var month =
                     e.target.value < 10 ? "0" + e.target.value : e.target.value;
                   handleChange({
                     start: state.fetchData.start,
-                    end: fullYear + month + "01",
-                    url: "/daily",
+                    end: fullYear + month+ "01",
+                    url: "daily",
                   });
                 }}
               >
@@ -153,7 +167,7 @@ export function FormParameters({ state, dispatch }) {
                       Math.abs(formattedDay) + 1
                     }`,
                     end: state.fetchData.end,
-                    url: "/daily",
+                    url: "daily",
                   });
                 }}
               />
@@ -175,7 +189,7 @@ export function FormParameters({ state, dispatch }) {
                     end: `${fullYear}${formattedMonth}${
                       Math.abs(formattedDay) + 1
                     }`,
-                    url: "/daily",
+                    url: "daily",
                   });
                 }}
               />
@@ -204,7 +218,7 @@ export function FormParameters({ state, dispatch }) {
                     end: `${fullYear}${formattedMonth}${
                       Math.abs(formattedDay) + 1
                     }`,
-                    url: "/daily",
+                    url: "daily",
                   });
                 }}
               />
@@ -219,24 +233,18 @@ export function FormParameters({ state, dispatch }) {
     e.preventDefault();
     toast.promise(
       callApi(
-        state.fetchData.url,
+        `?start=${state.fetchData.start}&end=${state.fetchData.end}&latitude=${state.location.lat}&longitude=${state.location.lng}&resolution=${state.fetchData.url}&comunity=SB`,
         {
           REQUEST: actions.RESULTS_FETCH_REQUEST,
           SUCCESS: actions.RESULTS_FETCH_SUCCESS,
           FAILURE: actions.RESULTS_FETCH_FAILURE,
-        },
-        {
-          longitude: state.location.lng,
-          latitude: state.location.lat,
-          start: state.fetchData.start,
-          end: state.fetchData.end,
         },
         dispatch
       ),
       {
         loading: "Loading...",
         success: "Success!",
-        error: "Error!",
+        error: "There was an error, please try again.",
       },
       { ...themed }
     );
@@ -251,7 +259,7 @@ export function FormParameters({ state, dispatch }) {
   }, [state.request.success]);
   return (
     <Container className="form_parameters">
-      <button
+      <PrimaryButton
         onClick={() => {
           dispatch({
             type: actions.SET_SCREEN,
@@ -261,11 +269,11 @@ export function FormParameters({ state, dispatch }) {
         className="my_button mb-4"
       >
         Go back to the map
-      </button>
-      <h3>Parameters</h3>
-      <span>
+      </PrimaryButton>
+      <Header modifiers={["h3"]}>Parameters</Header>
+      <Span>
         Select the type of date you want to see the data of the sunshine
-      </span>
+      </Span>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Select type of date</Form.Label>
@@ -290,23 +298,48 @@ export function FormParameters({ state, dispatch }) {
           </Form.Control>
         </Form.Group>
         {renderFormType()}
-        <span>
-          Current coordinates selected:
-          <br />
-          Latitude: {state.location.lat}
-          <br />
-          Longitude: {state.location.lng}
-        </span>
+        {state.location.nameLocation != "" && (
+          <Span>
+            <b>Location:</b>{" "}
+            {state.location.nameLocation
+              ? state.location.nameLocation
+              : "No location name"}
+          </Span>
+        )}
         <br />
-        <button
-          className="my_button mt-4"
-          type="submit"
-          disabled={state.request.loading}
-        >
-          Submit parameters
-        </button>
-      </Form>
+        <Span>
+          <b>Current coordinates selected:</b>
+          <br />
+          <b>Latitude: </b>
+          {state.location.lat}
+          <br />
 
+          <b>Longitude: </b>
+          {state.location.lng}
+        </Span>
+        <br />
+        {state.location.lng != 0 ? (
+          <SecondaryButton
+            className="my_button mt-4"
+            type="submit"
+            disabled={state.request.loading}
+          >
+            Submit parameters
+          </SecondaryButton>
+        ) : (
+          <SecondaryButton
+            className="my_button mt-4"
+            onClick={() => {
+              dispatch({
+                type: actions.SET_SCREEN,
+                payload: "selectLocation",
+              });
+            }}
+          >
+            Please select a location on the map
+          </SecondaryButton>
+        )}
+      </Form>
     </Container>
   );
 }

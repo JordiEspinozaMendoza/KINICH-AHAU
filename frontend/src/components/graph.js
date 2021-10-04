@@ -17,14 +17,14 @@ export const Graph = ({ data }) => {
     if (data) {
       setFinalData(
         // loop through object
-        Object.keys(data.T2M).map((key) => {
+        Object.keys(data).map((key) => {
           return {
             name: new Date(
               key.substring(0, 4),
               key.substring(4, 6) - 1,
               key.substring(6, 8)
             ).toLocaleDateString(),
-            T2M: data.T2M[key],
+            T2M: data[key],
           };
         })
       );
@@ -53,7 +53,7 @@ export const Graph = ({ data }) => {
         <Line
           type="monotone"
           dataKey="T2M"
-          stroke="#8884d8"
+          stroke="#FC7A1E"
           activeDot={{ r: 8 }}
         />
       </LineChart>
@@ -83,7 +83,7 @@ export const GraphArr = ({ data, xName, name }) => {
         <Line
           type="monotone"
         dataKey={name}
-          stroke="#8884d8"
+          stroke="#FC7A1E"
           activeDot={{ r: 8 }}
         />
       </LineChart>
