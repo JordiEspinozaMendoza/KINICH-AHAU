@@ -15,6 +15,7 @@ Al iniciar la aplicación si se dan permisos de ubicación se seleccionará su u
 
 **Mapas**;
 Uso de google maps API y google places para la busqueda de ubicaciones en caso de que el usuario quisiera seleccionar una ubicación
+<img src="https://user-images.githubusercontent.com/71615543/135945129-4127d196-0e31-4a7f-b043-ae106f2304f1.png" width="425" height="400" />
 
 **Resultados**;
 Esta app retorna datos sobre la radiación con sus distintos tipos, dadas las propiedades de ubicación, años, frecuencia etc.
@@ -28,5 +29,6 @@ Estos resultados son mostrados con el uso de una gráfica por parte del frontend
 - Nodemon
 - React JS
 - Azure app services
+
 
 
