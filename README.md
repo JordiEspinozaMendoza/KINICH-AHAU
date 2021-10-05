@@ -32,3 +32,5 @@ Estos resultados son mostrados con el uso de una gráfica por parte del frontend
 - Nodemon
 - React JS
 - Azure app services
+
+🚀️ Agradecimientos a [Francisco Rocha](!https://github.com/fcoalerocha) por todo su apoyo durante la creación de este proyecto.
