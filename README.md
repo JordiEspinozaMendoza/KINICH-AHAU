@@ -1,6 +1,6 @@
 # YOU ARE MY SUNSHINE - KINICH-AHAU
 
-<img src="https://user-images.githubusercontent.com/71615543/135927460-46381589-b556-43c5-bceb-60580d176378.png" width="400" height="400" />
+<img src="https://user-images.githubusercontent.com/71615543/135927460-46381589-b556-43c5-bceb-60580d176378.png" width="400"  />
 
 [Proyecto desplegado](https://kinich-ahau.azurewebsites.net/#/)
 
@@ -8,20 +8,22 @@
 
 [Video youtube demo:](https://www.youtube.com/shorts/m4Q0_V_NbyA?feature=share)
 
-
 Aplicación web para ver niveles de radiación en distintas zonas del mundo
 Ofrece la facilidad de seleccionar una ubicación de manera sencilla y amigable para el usuario sin tener que dar datos de latitud y longitud.
 Al iniciar la aplicación si se dan permisos de ubicación se seleccionará su ubicación actual por default en el mapa con un pin de sol.
 
-<img src="https://user-images.githubusercontent.com/71615543/135945129-4127d196-0e31-4a7f-b043-ae106f2304f1.png" width="425" height="400" />
+<img src="https://user-images.githubusercontent.com/71615543/135945129-4127d196-0e31-4a7f-b043-ae106f2304f1.png" height="400" />
 
-**Mapas**;
+**Mapas**
 Uso de google maps API y google places para la busqueda de ubicaciones en caso de que el usuario quisiera seleccionar una ubicación
 
-**Resultados**;
+**Despliegue**
+La app fue desplegada con Azure App service para que pueda ser accedida desde cualquier lugar.
+
+**Resultados**
 Esta app retorna datos sobre la radiación con sus distintos tipos, dadas las propiedades de ubicación, años, frecuencia etc.
 Estos resultados son mostrados con el uso de una gráfica por parte del frontend
-
+<img src="./images/Screenshot from 2021-10-04 18-22-19.png" height="400" />
 
 **Stack**:
 
@@ -30,6 +32,3 @@ Estos resultados son mostrados con el uso de una gráfica por parte del frontend
 - Nodemon
 - React JS
 - Azure app services
-
-
-
