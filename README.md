@@ -13,9 +13,10 @@ Aplicación web para ver niveles de radiación en distintas zonas del mundo
 Ofrece la facilidad de seleccionar una ubicación de manera sencilla y amigable para el usuario sin tener que dar datos de latitud y longitud.
 Al iniciar la aplicación si se dan permisos de ubicación se seleccionará su ubicación actual por default en el mapa con un pin de sol.
 
+<img src="https://user-images.githubusercontent.com/71615543/135945129-4127d196-0e31-4a7f-b043-ae106f2304f1.png" width="425" height="400" />
+
 **Mapas**;
 Uso de google maps API y google places para la busqueda de ubicaciones en caso de que el usuario quisiera seleccionar una ubicación
-<img src="https://user-images.githubusercontent.com/71615543/135945129-4127d196-0e31-4a7f-b043-ae106f2304f1.png" width="425" height="400" />
 
 **Resultados**;
 Esta app retorna datos sobre la radiación con sus distintos tipos, dadas las propiedades de ubicación, años, frecuencia etc.
